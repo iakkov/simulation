@@ -6,7 +6,8 @@ public abstract class Creature extends Entity {
     private int speed;
     private int health;
 
-    public Creature(int speed, int health) {
+    public Creature(int x, int y, int speed, int health) {
+        super(x, y);
         this.speed = speed;
         this.health = health;
     }
@@ -24,5 +25,11 @@ public abstract class Creature extends Entity {
     }
     public void makeMove() {
 
+    }
+    public void takeDamage(int damage) {
+        this.health -= damage;
+        if (this.health <= 0) {
+            die();
+        }
     }
 }
