@@ -1,6 +1,4 @@
-package ru.iakkov.project.dynamicObj;
-
-import ru.iakkov.project.Entity;
+package ru.iakkov.project.entities.creatures;
 
 public class Herbivore extends Creature {
     public Herbivore(int x, int y, int speed, int health) {

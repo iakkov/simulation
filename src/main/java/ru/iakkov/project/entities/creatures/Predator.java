@@ -1,4 +1,4 @@
-package ru.iakkov.project.dynamicObj;
+package ru.iakkov.project.entities.creatures;
 
 public class Predator extends Creature {
     private int powerAttack;

@@ -1,4 +1,4 @@
-package ru.iakkov.project;
+package ru.iakkov.project.entities;
 
 abstract public class Entity {
     private int x, y;
@@ -17,4 +17,5 @@ abstract public class Entity {
         this.x = x;
         this.y = y;
     }
+    public abstract char getSymbol();
 }

@@ -1,6 +1,6 @@
-package ru.iakkov.project.dynamicObj;
+package ru.iakkov.project.entities.creatures;
 
-import ru.iakkov.project.Entity;
+import ru.iakkov.project.entities.Entity;
 
 public abstract class Creature extends Entity {
     private int speed;
