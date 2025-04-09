@@ -5,4 +5,13 @@ public class Herbivore extends Creature {
         super(x, y, speed, health);
     }
 
+    @Override
+    public void makeMove() {
+
+    }
+
+    @Override
+    public char getSymbol() {
+        return 'H';
+    }
 }

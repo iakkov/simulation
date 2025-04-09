@@ -23,13 +23,14 @@ public abstract class Creature extends Entity {
     public void setHealth(int health) {
         this.health = health;
     }
-    public void makeMove() {
 
-    }
+    public abstract void makeMove();
+
     public void takeDamage(int damage) {
         this.health -= damage;
-        if (this.health <= 0) {
-            die();
-        }
+    }
+
+    public boolean isALive() {
+        return health > 0;
     }
 }

@@ -1,12 +1,22 @@
 package ru.iakkov.project.entities.creatures;
 
 public class Predator extends Creature {
-    private int powerAttack;
+    private int attackPower;
     public Predator(int x, int y, int speed, int health, int powerAttack) {
         super(x, y, speed, health);
-        this.powerAttack = powerAttack;
+        this.attackPower = powerAttack;
     }
-    public void toAttack(Herbivore aim) {
-        aim.setHealth(aim.getHealth() - powerAttack);
+    public void attack(Herbivore aim) {
+        aim.takeDamage(attackPower);
+    }
+
+    @Override
+    public void makeMove() {
+
+    }
+
+    @Override
+    public char getSymbol() {
+        return 'P';
     }
 }
