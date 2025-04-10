@@ -26,4 +26,7 @@ abstract public class Entity {
     public abstract char getSymbol();
 
 
+    public Position getPosition() {
+        return new Position(x, y);
+    }
 }

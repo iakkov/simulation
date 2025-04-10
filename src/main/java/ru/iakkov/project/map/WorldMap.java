@@ -33,7 +33,10 @@ public class WorldMap {
     }
 
     void removeEntity(Entity e) {
-
+        Position position = e.getPosition();
+        if (entities.containsKey(position) && entities.get(position).equals(e)) {
+            entities.remove(position);
+        }
     }
     boolean moveEntity(Entity e, int newX, int newY) {
         return true;
