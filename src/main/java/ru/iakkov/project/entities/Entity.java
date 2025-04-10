@@ -1,5 +1,7 @@
 package ru.iakkov.project.entities;
 
+import ru.iakkov.project.Position;
+
 abstract public class Entity {
     private int x, y;
 
@@ -17,5 +19,11 @@ abstract public class Entity {
         this.x = x;
         this.y = y;
     }
+    public void setPosition(Position p) {
+        this.x = p.getX();
+        this.y = p.getY();
+    }
     public abstract char getSymbol();
+
+
 }
