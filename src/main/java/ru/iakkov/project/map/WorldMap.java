@@ -39,6 +39,16 @@ public class WorldMap {
         }
     }
     boolean moveEntity(Entity e, int newX, int newY) {
+        Position newPosition = new Position(newX, newY);
+        if (newX < 0 || newX >= width || newY < 0 || newY >= height) { //Проверка на границы карты, чтобы потом не запутаться
+            return false;
+        }
+        if (!isFree(newPosition)) {
+            return false;
+        }
+        entities.remove(e.getPosition());
+        e.setPosition(newPosition);
+        entities.put(newPosition, e);
         return true;
     }
 }
