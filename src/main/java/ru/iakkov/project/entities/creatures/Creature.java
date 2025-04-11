@@ -1,6 +1,7 @@
 package ru.iakkov.project.entities.creatures;
 
 import ru.iakkov.project.entities.Entity;
+import ru.iakkov.project.map.WorldMap;
 
 public abstract class Creature extends Entity {
     private int speed;
@@ -24,7 +25,7 @@ public abstract class Creature extends Entity {
         this.health = health;
     }
 
-    public abstract void makeMove();
+    public abstract void makeMove(WorldMap worldMap);
 
     public void takeDamage(int damage) {
         this.health -= damage;

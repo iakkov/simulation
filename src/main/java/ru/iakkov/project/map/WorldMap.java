@@ -17,7 +17,7 @@ public class WorldMap {
         this.entities = new HashMap<>();
     }
 
-    private boolean isFree(Position p) {
+    public boolean isFree(Position p) {
         return !entities.containsKey(p);
     }
 
@@ -38,7 +38,7 @@ public class WorldMap {
             entities.remove(position);
         }
     }
-    boolean moveEntity(Entity e, int newX, int newY) {
+    public boolean moveEntity(Entity e, int newX, int newY) {
         Position newPosition = new Position(newX, newY);
         if (newX < 0 || newX >= width || newY < 0 || newY >= height) { //Проверка на границы карты, чтобы потом не запутаться
             return false;

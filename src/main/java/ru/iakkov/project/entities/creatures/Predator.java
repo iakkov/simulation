@@ -1,5 +1,7 @@
 package ru.iakkov.project.entities.creatures;
 
+import ru.iakkov.project.map.WorldMap;
+
 public class Predator extends Creature {
     private int attackPower;
     public Predator(int x, int y, int speed, int health, int powerAttack) {
@@ -11,7 +13,7 @@ public class Predator extends Creature {
     }
 
     @Override
-    public void makeMove() {
+    public void makeMove(WorldMap worldMap) {
 
     }
 
