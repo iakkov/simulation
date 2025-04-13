@@ -17,11 +17,18 @@ public class WorldMap {
         this.entities = new HashMap<>();
     }
 
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
+
     public boolean isFree(Position p) {
         return !entities.containsKey(p);
     }
 
-    void addEntity(Entity e, Position p) {
+    public void addEntity(Entity e, Position p) {
         if(isFree(p)) {
             entities.put(p, e);
             e.setPosition(p);
