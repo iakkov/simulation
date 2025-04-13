@@ -28,11 +28,11 @@ public class WorldMap {
         }
     }
 
-    Entity getEntityAt(int x, int y) {
+    public Entity getEntityAt(int x, int y) {
         return entities.get(new Position(x, y));
     }
 
-    void removeEntity(Entity e) {
+    public void removeEntity(Entity e) {
         Position position = e.getPosition();
         if (entities.containsKey(position) && entities.get(position).equals(e)) {
             entities.remove(position);
