@@ -1,28 +1,25 @@
 package ru.iakkov.project;
 
-import ru.iakkov.project.entities.creatures.Creature;
-import ru.iakkov.project.entities.creatures.Herbivore;
-import ru.iakkov.project.entities.creatures.Predator;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import ru.iakkov.project.map.WorldMap;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class SimulationApplication {
-    public static void main(String[] args) throws InterruptedException {
+public class SimulationApplication extends Application {
+    public static void main(String[] args) {
+        launch(args);
+    }
+    @Override
+    public void start(Stage primaryStage) {
         WorldMap worldMap = new WorldMap(10, 10);
-        List<Creature> creatures = new ArrayList<>();
+        Renderer renderer = new Renderer(worldMap);
 
-        Herbivore herbivore = new Herbivore(1, 1, 1, 10);
-        Predator predator = new Predator(3, 3, 1, 20, 5);
+        Scene scene = new Scene(renderer.getGrid(), 600, 600);
 
-        worldMap.addEntity(herbivore, new Position(1, 1));
-        worldMap.addEntity(predator, new Position(3, 3));
+        primaryStage.setTitle("Симуляция мира");
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
-        creatures.add(herbivore);
-        creatures.add(predator);
-
-        Simulation sim = new Simulation(worldMap, creatures);
-        sim.startSimulation(20, 500);
+        renderer.startRendering();
     }
 }

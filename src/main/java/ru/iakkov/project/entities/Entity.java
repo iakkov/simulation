@@ -1,6 +1,7 @@
 package ru.iakkov.project.entities;
 
 import ru.iakkov.project.Position;
+import ru.iakkov.project.map.WorldMap;
 
 abstract public class Entity {
     private int x, y;

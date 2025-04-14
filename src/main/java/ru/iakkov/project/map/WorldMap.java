@@ -2,7 +2,7 @@ package ru.iakkov.project.map;
 
 import ru.iakkov.project.Position;
 import ru.iakkov.project.entities.Entity;
-
+import ru.iakkov.project.entities.creatures.Creature;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,5 +57,13 @@ public class WorldMap {
         e.setPosition(newPosition);
         entities.put(newPosition, e);
         return true;
+    }
+
+    public void nextTurn() {
+        for (Entity entity : entities.values()) {
+            if (entity instanceof Creature creature) {
+                creature.makeMove(this);
+            }
+        }
     }
 }
