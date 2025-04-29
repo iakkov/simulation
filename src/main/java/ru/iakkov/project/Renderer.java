@@ -7,7 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
-import ru.iakkov.project.entities.Entity;
+import ru.iakkov.project.entities.*;
+import ru.iakkov.project.entities.creatures.*;
 import ru.iakkov.project.map.WorldMap;
 
 public class Renderer {
@@ -71,10 +72,20 @@ public class Renderer {
             for (int x = 0; x < worldMap.getWidth(); x++) {
                 Label label = cells[y][x];
                 Entity entity = worldMap.getEntityAt(x, y);
-                if (entity != null) {
-                    label.setText(String.valueOf(entity.getSymbol()));
+                if (entity instanceof Predator) {
+                    label.setText("\uD83D\uDC3A");
+                } else if (entity instanceof Herbivore) {
+                    label.setText("\uD83D\uDC11");
+                } else if (entity instanceof Grass) {
+                    label.setText("\uD83C\uDF31");
+                } else if (entity instanceof Tree) {
+                    label.setText("\uD83C\uDF32");
+                } else if (entity instanceof Rock) {
+                    label.setText("\uD83E\uDEA8");
+                } else if (entity != null) {
+                        label.setText("❓");
                 } else {
-                    label.setText(".");
+                    label.setText("⬜");
                 }
             }
         }
