@@ -3,7 +3,10 @@ package ru.iakkov.project.map;
 import ru.iakkov.project.Position;
 import ru.iakkov.project.entities.Entity;
 import ru.iakkov.project.entities.creatures.Creature;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WorldMap {
@@ -60,7 +63,8 @@ public class WorldMap {
     }
 
     public void nextTurn() {
-        for (Entity entity : entities.values()) {
+        List<Entity> allEntities = new ArrayList<>(entities.values());
+        for (Entity entity : allEntities) {
             if (entity instanceof Creature creature) {
                 creature.makeMove(this);
             }

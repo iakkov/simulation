@@ -18,7 +18,7 @@ public class Renderer {
     public Renderer(WorldMap worldMap) {
         this.worldMap = worldMap;
         this.grid = new GridPane();
-        this.cells = new Label[worldMap.getWidth()][worldMap.getHeight()];
+        this.cells = new Label[worldMap.getHeight()][worldMap.getWidth()];
         renderInitialGrid();
     }
 
@@ -29,7 +29,7 @@ public class Renderer {
                 Label cell = new Label(".");
                 cell.setMinSize(40, 40);
                 cell.setAlignment(Pos.CENTER);
-                cell.setStyle("-fx-border-color: gray;");
+                cell.setStyle("-fx-border-color: gray; -fx-font-size: 16px; -fx-text-fill: black;");
                 grid.add(cell, x, y);
                 cells[x][y] = cell;
             }
@@ -54,7 +54,7 @@ public class Renderer {
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {
                     worldMap.nextTurn();
-                    render(this.worldMap);
+                    renderWorld();
                 })
         );
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -69,8 +69,8 @@ public class Renderer {
     public void renderWorld() {
         for (int y = 0; y < worldMap.getHeight(); y++) {
             for (int x = 0; x < worldMap.getWidth(); x++) {
-                Entity entity = worldMap.getEntityAt(x, y);
                 Label label = cells[y][x];
+                Entity entity = worldMap.getEntityAt(x, y);
                 if (entity != null) {
                     label.setText(String.valueOf(entity.getSymbol()));
                 } else {
