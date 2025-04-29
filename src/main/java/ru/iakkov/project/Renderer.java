@@ -74,8 +74,16 @@ public class Renderer {
                 Entity entity = worldMap.getEntityAt(x, y);
                 if (entity instanceof Predator) {
                     label.setText("\uD83D\uDC3A");
+                    label.setStyle("-fx-background-color: #ffb3b3; " +
+                            "-fx-border-color: gray; " +
+                            "-fx-font-size: 24px; " +
+                            "-fx-alignment: center;");
                 } else if (entity instanceof Herbivore) {
                     label.setText("\uD83D\uDC11");
+                    label.setStyle("-fx-background-color: #b3ffb3; " +
+                            "-fx-border-color: gray; " +
+                            "-fx-font-size: 24px; " +
+                            "-fx-alignment: center;");
                 } else if (entity instanceof Grass) {
                     label.setText("\uD83C\uDF31");
                 } else if (entity instanceof Tree) {
@@ -83,9 +91,17 @@ public class Renderer {
                 } else if (entity instanceof Rock) {
                     label.setText("\uD83E\uDEA8");
                 } else if (entity != null) {
-                        label.setText("❓");
+                    label.setText("❓");
+                    label.setStyle("-fx-background-color: #ccccff; " +
+                            "-fx-border-color: gray; " +
+                            "-fx-font-size: 24px; " +
+                            "-fx-alignment: center;");
                 } else {
-                    label.setText("⬜");
+                    label.setText(" ");
+                    label.setStyle("-fx-background-color: #f2f2f2; " +
+                            "-fx-border-color: gray; " +
+                            "-fx-font-size: 24px; " +
+                            "-fx-alignment: center;");
                 }
             }
         }
