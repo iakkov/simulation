@@ -11,12 +11,14 @@ import ru.iakkov.project.entities.Entity;
 import ru.iakkov.project.map.WorldMap;
 
 public class Renderer {
-    private WorldMap worldMap;
-    private GridPane grid;
+    private final WorldMap worldMap;
+    private final GridPane grid;
+    private final Label[][] cells;
 
     public Renderer(WorldMap worldMap) {
         this.worldMap = worldMap;
-        grid = new GridPane();
+        this.grid = new GridPane();
+        this.cells = new Label[worldMap.getWidth()][worldMap.getHeight()];
         renderInitialGrid();
     }
 
@@ -29,6 +31,7 @@ public class Renderer {
                 cell.setAlignment(Pos.CENTER);
                 cell.setStyle("-fx-border-color: gray;");
                 grid.add(cell, x, y);
+                cells[x][y] = cell;
             }
         }
     }
@@ -48,10 +51,12 @@ public class Renderer {
     }
 
     public void startRendering() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            worldMap.nextTurn();
-            render(this.worldMap);
-        }));
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> {
+                    worldMap.nextTurn();
+                    render(this.worldMap);
+                })
+        );
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
@@ -59,5 +64,19 @@ public class Renderer {
 
     public GridPane getGrid() {
         return grid;
+    }
+
+    public void renderWorld() {
+        for (int y = 0; y < worldMap.getHeight(); y++) {
+            for (int x = 0; x < worldMap.getWidth(); x++) {
+                Entity entity = worldMap.getEntityAt(x, y);
+                Label label = cells[y][x];
+                if (entity != null) {
+                    label.setText(String.valueOf(entity.getSymbol()));
+                } else {
+                    label.setText(".");
+                }
+            }
+        }
     }
 }
