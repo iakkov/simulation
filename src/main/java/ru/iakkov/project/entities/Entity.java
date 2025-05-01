@@ -15,10 +15,7 @@ abstract public class Entity {
     public int getY() {
         return y;
     }
-    public void setPosition(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+
     public void setPosition(Position p) {
         this.x = p.getX();
         this.y = p.getY();
